@@ -1,36 +1,36 @@
+import { useMemo } from "react";
 import { useVillains } from "../../api/hooks/useVillains";
 import { TVillainSchema } from "../../schemas";
 import { getTransformedImage, getWinrate } from "../../util/helperFunctions";
 import styles from "./Leaderboard.module.css";
 import Podium from "./Podium";
 
-// TODO: - Sort Villains by Games Won / Win Percentage
+const sortVillains = (a: TVillainSchema, b: TVillainSchema) => {
+  if (b.wins === a.wins) {
+    if (a.losses === b.losses) {
+      return a.name.localeCompare(b.name);
+    }
+    return a.losses - b.losses;
+  }
+  return b.wins - a.wins;
+};
 
 const Leaderboard = () => {
   const { data: villains } = useVillains();
 
-  const sortVillains = (a: TVillainSchema, b: TVillainSchema) => {
-    if (b.wins === a.wins) {
-      if (a.losses === b.losses) {
-        return a.name.localeCompare(b.name);
-      }
-      return a.losses - b.losses;
-    }
-    return b.wins - a.wins;
-  };
+  const sortedVillains = useMemo(() => {
+    return [...(villains || [])].sort(sortVillains);
+  }, [villains]);
 
-  const getTopThree = (data: TVillainSchema[]) => {
-    return data.sort(sortVillains).slice(0, 3);
-  };
+  const topThree = useMemo(() => sortedVillains.slice(0, 3), [sortedVillains]);
+  const rest = useMemo(() => sortedVillains.slice(3), [sortedVillains]);
 
-  const getRest = (data: TVillainSchema[]) => {
-    return data.sort(sortVillains).slice(3);
-  };
+  if (!villains?.length) return <div>No villains found!</div>;
 
   return (
     <div className={styles.leaderboard}>
-      <Podium villains={getTopThree(villains || [])} />
-      <RankingList villains={getRest(villains || [])} />
+      <Podium villains={topThree} />
+      <RankingList villains={rest} />
     </div>
   );
 };
@@ -62,7 +62,7 @@ const RankingList = ({ villains }: Props) => {
                     villain.imageUrl,
                     "q_auto,f_auto,w_300/"
                   )}
-                  alt={villain.name}
+                  alt={`Thumbnail of the villainous ${villain.name}`}
                 />
                 <p>{villain.name}</p>
               </div>

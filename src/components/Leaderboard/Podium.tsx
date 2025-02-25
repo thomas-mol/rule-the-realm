@@ -9,16 +9,18 @@ const Podium = ({ villains }: Props) => {
   return (
     <div className={styles.podium}>
       {villains.map((villain, index) => (
-        <div className={styles.place} key={index}>
+        <div className={styles.place} key={villain.id}>
           <div className={styles.imageContainer}>
             <img
               src={getTransformedImage(
                 villain.imageUrl,
                 "q_auto,f_auto,w_500/"
               )}
-              alt={villain.name}
+              alt={`${villain.name}, ranked #${index + 1}`}
             />
-            <div className={styles.number}>{index + 1}</div>
+            <div className={styles.number} aria-hidden="true">
+              {index + 1}
+            </div>
           </div>
           <p className={styles.name}>{villain.name}</p>
           <p className={styles.winrate}>

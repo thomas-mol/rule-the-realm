@@ -1,4 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMemo } from "react";
 import { Controller, useForm } from "react-hook-form";
 import Select, { MultiValue, StylesConfig } from "react-select";
 import {
@@ -46,10 +47,28 @@ const Form = ({ villains, onSubmit }: FormProps) => {
     resolver: zodResolver(gameSessionSchema),
   });
 
+  const villainOptions = useMemo(
+    () =>
+      [...villains]
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map(({ id, name }) => ({ value: id, label: name })),
+    [villains]
+  );
+
   const selectedVillainIds = watch("villains") || [];
 
-  const handleVillainsChange = (selected: MultiValue<TVillainSchema>) => {
-    const selectedIds = selected.map((v) => v.id);
+  const eligibleWinners = useMemo(
+    () =>
+      villains
+        .filter((villain) => selectedVillainIds.includes(villain.id))
+        .map(({ id, name }) => ({ value: id, label: name })),
+    [villains, selectedVillainIds]
+  );
+
+  const handleVillainsChange = (
+    selected: MultiValue<{ label: string; value: string }>
+  ) => {
+    const selectedIds = selected.map((v) => v.value);
     setValue("villains", selectedIds);
 
     const currentWinnerId = getValues("winnerId");
@@ -58,14 +77,13 @@ const Form = ({ villains, onSubmit }: FormProps) => {
     }
   };
 
+  const handleFormSubmit = (data: TGameSessionSchema) => {
+    onSubmit(data);
+    reset();
+  };
+
   return (
-    <form
-      className={styles.form}
-      onSubmit={handleSubmit((data) => {
-        onSubmit(data);
-        reset();
-      })}
-    >
+    <form className={styles.form} onSubmit={handleSubmit(handleFormSubmit)}>
       <div className={styles.group}>
         <label className={styles.label} htmlFor="player-count">
           Player Count 👥
@@ -101,10 +119,10 @@ const Form = ({ villains, onSubmit }: FormProps) => {
               closeMenuOnSelect={false}
               inputId="villains"
               isMulti
-              options={villains.sort((a, b) => a.name.localeCompare(b.name))}
-              getOptionLabel={(option) => option.name}
-              getOptionValue={(option) => option.id}
-              value={villains.filter((v) => field.value?.includes(v.id))}
+              options={villainOptions}
+              value={villainOptions.filter((v) =>
+                field.value?.includes(v.value)
+              )}
               onChange={(selected) => handleVillainsChange(selected || [])}
               classNamePrefix="react-select"
               placeholder="Select villains..."
@@ -127,29 +145,22 @@ const Form = ({ villains, onSubmit }: FormProps) => {
             <label className={styles.label} htmlFor="winner">
               Victorious Villain 👑
             </label>
-            <Select
+            <select
               {...field}
-              styles={customStyles}
-              inputId="winner"
-              options={villains.filter((villain) =>
-                selectedVillainIds.includes(villain.id)
-              )}
-              getOptionLabel={(option) => option.name}
-              getOptionValue={(option) => option.id}
-              value={villains.find((v) => v.id === field.value) ?? null}
-              onChange={(selected) =>
-                field.onChange(
-                  (selected as unknown as TVillainSchema)?.id || ""
-                )
-              }
-              isDisabled={selectedVillainIds.length === 0}
-              classNamePrefix="react-select"
-              placeholder="Select winner..."
+              id="winner"
+              className={styles.input}
+              disabled={selectedVillainIds.length === 0}
               aria-describedby={errors.winnerId ? "winner-error" : undefined}
-              isClearable
-            />
+            >
+              <option value="">Select winner...</option>
+              {eligibleWinners.map(({ value, label }) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
+            </select>
             {errors.winnerId && (
-              <p id="winner-id-error" className={styles.error}>
+              <p id="winner-error" className={styles.error}>
                 {errors.winnerId.message}
               </p>
             )}
