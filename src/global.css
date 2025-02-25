@@ -47,8 +47,8 @@ a {
 :root {
   --color-bg: #121212; /* Diep zwart-grijs */
   --color-bg-alt: #1e1e1e; /* Iets lichter voor contrast */
-  --color-primary: #8b5cf6; /* Paarstint, villainous stijl */
-  --color-secondary: #ffcc00; /* Gouddetail voor winnaars of highlights */
+  --color-primary: rgb(139, 92, 246); /* Paarstint, villainous stijl */
+  --color-secondary: rgb(255, 204, 0); /* Gouddetail voor winnaars of highlights */
   --color-text: #e0e0e0; /* Lichtgrijs voor leesbaarheid */
   --color-text-muted: #a0a0a0; /* Voor minder belangrijke tekst */
   --color-border: #333; /* Subtiele borders */

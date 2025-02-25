@@ -1,6 +1,6 @@
 import { useAddGame } from "../api/hooks/useGames";
 import { useVillains } from "../api/hooks/useVillains";
-import Form from "../components/Form";
+import Form from "../components/Form/Form";
 import { TGameSessionSchema } from "../schemas";
 
 const FormPage = () => {

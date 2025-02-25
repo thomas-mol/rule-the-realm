@@ -7,7 +7,7 @@ import Podium from "./Podium";
 // TODO: - Sort Villains by Games Won / Win Percentage
 
 const Leaderboard = () => {
-  const { data: villains, isLoading } = useVillains();
+  const { data: villains } = useVillains();
 
   const sortVillains = (a: TVillainSchema, b: TVillainSchema) => {
     if (b.wins === a.wins) {

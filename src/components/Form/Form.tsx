@@ -1,17 +1,29 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
-import Select, { MultiValue } from "react-select";
-import styles from "./Form.module.css";
+import Select, { MultiValue, StylesConfig } from "react-select";
 import {
   gameSessionSchema,
   TGameSessionSchema,
   TVillainSchema,
-} from "../schemas";
+} from "../../schemas";
+import styles from "./Form.module.css";
 
 interface FormProps {
   villains: TVillainSchema[];
   onSubmit: (data: TGameSessionSchema) => void;
 }
+
+const customStyles: StylesConfig<any, true> = {
+  option: (provided, state) => ({
+    ...provided,
+    backgroundColor: state.isSelected
+      ? "#ffcc00"
+      : state.isFocused
+      ? "#ffee99"
+      : "#fff",
+    color: state.isSelected ? "#000" : "#333",
+  }),
+};
 
 const Form = ({ villains, onSubmit }: FormProps) => {
   const {
@@ -85,6 +97,7 @@ const Form = ({ villains, onSubmit }: FormProps) => {
             </label>
             <Select
               {...field}
+              styles={customStyles}
               closeMenuOnSelect={false}
               inputId="villains"
               isMulti
@@ -116,6 +129,7 @@ const Form = ({ villains, onSubmit }: FormProps) => {
             </label>
             <Select
               {...field}
+              styles={customStyles}
               inputId="winner"
               options={villains.filter((villain) =>
                 selectedVillainIds.includes(villain.id)
@@ -123,7 +137,11 @@ const Form = ({ villains, onSubmit }: FormProps) => {
               getOptionLabel={(option) => option.name}
               getOptionValue={(option) => option.id}
               value={villains.find((v) => v.id === field.value) ?? null}
-              onChange={(selected) => field.onChange(selected?.id || "")}
+              onChange={(selected) =>
+                field.onChange(
+                  (selected as unknown as TVillainSchema)?.id || ""
+                )
+              }
               isDisabled={selectedVillainIds.length === 0}
               classNamePrefix="react-select"
               placeholder="Select winner..."
