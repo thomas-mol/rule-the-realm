@@ -7,12 +7,13 @@
 }
 
 .title {
-  grid-area: header;
   display: flex;
+  grid-area: header;
   align-items: center;
   justify-content: center;
-  height: 3.5rem;
+  height: var(--header-height);
   font-size: 1.75rem;
+  background-color: var(--color-bg-alt);
 }
 
 .page {
@@ -30,7 +31,7 @@
 
 .title,
 .desktop {
-  border-bottom: 2px solid var(--color-border);
+  border-bottom: 1px solid var(--color-primary);
 }
 
 @media screen and (min-width: 770px) {

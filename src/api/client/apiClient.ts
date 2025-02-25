@@ -41,8 +41,6 @@ abstract class APIClient<T extends { id: string }> {
       collection(db, this.collectionRef),
       dataWithoutId
     );
-    console.log("Document added with id:", documentRef.id);
-    console.log("Document data:", dataWithoutId);
 
     alert("Game added.");
 
@@ -56,14 +54,14 @@ abstract class APIClient<T extends { id: string }> {
       throw new Error(`Cannot update: Document with id: ${data.id} not found.`);
     }
     await updateDoc(documentRef, data);
-    console.log(`Document with id: ${data.id} successfully edited!`);
+    console.log(`Document successfully edited!`);
 
     return this.getById(data.id);
   }
 
   async delete(id: string): Promise<void> {
     await deleteDoc(doc(db, this.collectionRef, id));
-    console.log(`Document with id: ${id} successfully deleted.`);
+    console.log(`Document successfully deleted.`);
   }
 }
 

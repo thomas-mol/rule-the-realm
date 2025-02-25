@@ -1,4 +1,4 @@
-import { FaPlus } from "react-icons/fa";
+import { FaGithub, FaPlus } from "react-icons/fa";
 import { GiPodium } from "react-icons/gi";
 import { NavLink } from "react-router";
 import styles from "./NavBar.module.css";
@@ -40,6 +40,13 @@ export const DesktopNavBar = ({ className }: Props) => {
         to={"/form"}
       >
         <FaPlus /> Add a Game
+      </NavLink>
+      <NavLink
+        to={"https://github.com/thomas-mol/rule-the-realm"}
+        target="_blank"
+      >
+        <FaGithub />
+        Github
       </NavLink>
     </nav>
   );

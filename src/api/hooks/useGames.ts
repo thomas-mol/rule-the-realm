@@ -13,9 +13,34 @@ export const useGames = () => {
 
 export const useAddGame = () => {
   const queryClient = useQueryClient();
-  return useMutation<TGameSessionSchema, Error, TGameSessionSchema>({
+  return useMutation<
+    TGameSessionSchema,
+    Error,
+    TGameSessionSchema,
+    { prevGames?: TGameSessionSchema[] }
+  >({
     mutationFn: (game) => api.addGame(game),
-    onSuccess: () => {
+    onMutate: async (game) => {
+      await queryClient.cancelQueries({ queryKey: ["games"] });
+
+      const prevGames = queryClient.getQueryData<TGameSessionSchema[]>([
+        "games",
+      ]);
+
+      queryClient.setQueryData<TGameSessionSchema[]>(
+        ["games"],
+        (oldGames = []) => [...oldGames, { ...game, id: "temp-id" }]
+      );
+      return { prevGames };
+    },
+    onError: (error, __, context) => {
+      console.error(error);
+
+      if (context?.prevGames) {
+        queryClient.setQueryData(["games"], context.prevGames);
+      }
+    },
+    onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ["games"] });
       queryClient.invalidateQueries({ queryKey: ["villains"] });
     },
