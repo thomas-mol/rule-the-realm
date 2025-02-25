@@ -1,5 +1,5 @@
 import { TVillainSchema } from "../../schemas";
-import { getWinrate } from "../../util/helperFunctions";
+import { getWinrate, getTransformedImage } from "../../util/helperFunctions";
 import styles from "./Podium.module.css";
 
 interface Props {
@@ -11,7 +11,13 @@ const Podium = ({ villains }: Props) => {
       {villains.map((villain, index) => (
         <div className={styles.place} key={index}>
           <div className={styles.imageContainer}>
-            <img src={villain.imageUrl} alt={villain.name} />
+            <img
+              src={getTransformedImage(
+                villain.imageUrl,
+                "q_auto,f_auto,w_500/"
+              )}
+              alt={villain.name}
+            />
             <div className={styles.number}>{index + 1}</div>
           </div>
           <p className={styles.name}>{villain.name}</p>

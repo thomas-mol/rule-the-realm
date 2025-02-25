@@ -58,7 +58,10 @@ const RankingList = ({ villains }: Props) => {
             <td>
               <div className={styles.image}>
                 <img
-                  src={getTransformedImage(villain.imageUrl, "q_auto:best/")}
+                  src={getTransformedImage(
+                    villain.imageUrl,
+                    "q_auto,f_auto,w_300/"
+                  )}
                   alt={villain.name}
                 />
                 <p>{villain.name}</p>

@@ -45,15 +45,15 @@ a {
 /* #endregion */
 
 :root {
-  --color-bg: #121212; /* Diep zwart-grijs */
-  --color-bg-alt: #1e1e1e; /* Iets lichter voor contrast */
-  --color-primary: rgb(139, 92, 246); /* Paarstint, villainous stijl */
-  --color-secondary: rgb(255, 204, 0); /* Gouddetail voor winnaars of highlights */
-  --color-text: #e0e0e0; /* Lichtgrijs voor leesbaarheid */
-  --color-text-muted: #a0a0a0; /* Voor minder belangrijke tekst */
-  --color-border: #333; /* Subtiele borders */
-  --color-hover: #2a2a2a; /* Hover effecten */
-  --color-danger: #ff3b30; /* Voor verlies of fouten */
+  --color-bg: #121212;
+  --color-bg-alt: #1e1e1e;
+  --color-primary: rgb(139, 92, 246);
+  --color-secondary: rgb(255, 204, 0);
+  --color-text: #e0e0e0;
+  --color-text-muted: #a0a0a0;
+  --color-border: #333;
+  --color-hover: #2a2a2a;
+  --color-danger: #ff3b30;
 
   /* Schatten voor diepte */
   --shadow-soft: 0px 4px 6px rgba(0, 0, 0, 0.3);

@@ -44,6 +44,8 @@ abstract class APIClient<T extends { id: string }> {
     console.log("Document added with id:", documentRef.id);
     console.log("Document data:", dataWithoutId);
 
+    alert("Game added.");
+
     return this.getById(documentRef.id);
   }
 
