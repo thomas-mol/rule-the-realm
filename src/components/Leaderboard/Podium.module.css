@@ -1,0 +1,109 @@
+.podium {
+  --rgb-gold: 255, 223, 0;
+  --shadow-gold: 0 0 1rem 0.25rem rgba(var(--rgb-gold), 0.3);
+
+  --rgb-silver: 192, 192, 192;
+  --shadow-silver: 0 0 1rem 0.25rem rgba(var(--rgb-silver), 0.3);
+
+  --rgb-bronze: 205, 127, 50;
+  --shadow-bronze: 0 0 1rem 0.25rem rgba(var(--rgb-bronze), 0.3);
+
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 0.25rem;
+  max-width: 600px;
+  margin: 0 auto;
+
+  .place {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .name {
+      font-weight: 600;
+      padding-bottom: 0.25rem;
+      border-bottom: 1px solid var(--color-text-muted);
+    }
+
+    .winrate {
+      font-weight: 300;
+      text-align: center;
+    }
+  }
+
+  .place:nth-child(1) {
+    order: 2;
+    flex: 3;
+
+    img,
+    .number {
+      border-color: rgb(var(--rgb-gold));
+      color: rgb(var(--rgb-gold));
+
+      -webkit-box-shadow: var(--shadow-gold);
+      -moz-box-shadow: var(--shadow-gold);
+      box-shadow: var(--shadow-gold);
+    }
+  }
+
+  .place:nth-child(2) {
+    order: 1;
+    flex: 2;
+
+    img,
+    .number {
+      border-color: rgb(var(--rgb-silver));
+      color: rgb(var(--rgb-silver));
+
+      -webkit-box-shadow: var(--shadow-silver);
+      -moz-box-shadow: var(--shadow-silver);
+      box-shadow: var(--shadow-silver);
+    }
+  }
+
+  .place:nth-child(3) {
+    order: 3;
+    flex: 2;
+
+    img,
+    .number {
+      border-color: rgb(var(--rgb-bronze));
+      color: rgb(var(--rgb-bronze));
+
+      -webkit-box-shadow: var(--shadow-bronze);
+      -moz-box-shadow: var(--shadow-bronze);
+      box-shadow: var(--shadow-bronze);
+    }
+  }
+
+  .imageContainer {
+    --size-number: 2em;
+    position: relative;
+    margin-bottom: var(--size-number);
+
+    img,
+    .number {
+      border-radius: 50%;
+      border-style: solid;
+    }
+
+    img {
+      border-width: 4px;
+    }
+
+    .number {
+      display: grid;
+      position: absolute;
+      bottom: calc(-1 * (var(--size-number) / 2));
+      left: calc(50% - (var(--size-number) / 2));
+      place-items: center;
+      height: var(--size-number);
+      width: var(--size-number);
+      background-color: var(--color-bg-alt);
+      border-width: 2px;
+      font-weight: bold;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+/* #region Minimal Reset CSS */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* html {
+  color-scheme: dark light;
+} */
+
+body {
+  height: 100vh;
+  background-color: var(--color-bg-alt);
+  color: var(--color-text);
+}
+
+#root {
+  height: 100%;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* #endregion */
+
+:root {
+  --color-bg: #121212; /* Diep zwart-grijs */
+  --color-bg-alt: #1e1e1e; /* Iets lichter voor contrast */
+  --color-primary: #8b5cf6; /* Paarstint, villainous stijl */
+  --color-secondary: #ffcc00; /* Gouddetail voor winnaars of highlights */
+  --color-text: #e0e0e0; /* Lichtgrijs voor leesbaarheid */
+  --color-text-muted: #a0a0a0; /* Voor minder belangrijke tekst */
+  --color-border: #333; /* Subtiele borders */
+  --color-hover: #2a2a2a; /* Hover effecten */
+  --color-danger: #ff3b30; /* Voor verlies of fouten */
+
+  /* Schatten voor diepte */
+  --shadow-soft: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-hard: 0px 8px 12px rgba(0, 0, 0, 0.5);
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}

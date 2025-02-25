@@ -1,0 +1,40 @@
+.mobile {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 3.5rem;
+  width: 100%;
+  background-color: var(--color-bg-alt);
+  border-top: 1px solid var(--color-primary);
+  border-radius: 0.5rem 0.5rem 0 0;
+
+  a {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    font-size: 2rem;
+    color: var(--color-text);
+
+    &:first-child {
+      border-right: 1px solid var(--color-primary);
+    }
+  }
+}
+
+.desktop {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  a {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.125rem;
+    color: var(--color-text);
+  }
+}
+
+a.active {
+  color: var(--color-primary);
+}

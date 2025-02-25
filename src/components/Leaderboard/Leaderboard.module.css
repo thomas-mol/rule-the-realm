@@ -1,0 +1,77 @@
+.leaderboard {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+}
+
+@media screen and (min-width: 770px) {
+  .leaderboard {
+    padding-bottom: 0;
+  }
+}
+
+.ranking {
+  width: 100%;
+  border-collapse: collapse;
+
+  tr:nth-of-type(2n) {
+    background-color: var(--color-bg);
+  }
+
+  th,
+  td {
+    padding: 0.5rem 0.5rem;
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  th {
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--color-primary);
+  }
+
+  td:first-child {
+    font-weight: bold;
+    color: var(--color-secondary);
+  }
+
+  th:last-child,
+  td:last-child {
+    text-align: right;
+  }
+
+  .image {
+    display: flex;
+    align-items: center;
+    padding-left: 0.5rem;
+    gap: 1rem;
+    width: 100%;
+
+    img {
+      max-width: 50px;
+      border-radius: 0.5rem;
+    }
+  }
+
+  .progress {
+    text-align: left;
+    border-radius: 0.25rem;
+    background-color: rgba(255, 255, 255, 20%);
+
+    .bar {
+      font-size: clamp(0.75rem, 0.7rem + 0.25vw, 1rem);
+      padding-left: 0.25rem;
+      border-radius: 0.25rem;
+      background-color: var(--color-primary);
+    }
+  }
+
+  .gamesPlayed {
+    margin-top: 0.25rem;
+    font-size: clamp(0.75rem, 0.7rem + 0.25vw, 1rem);
+    font-style: italic;
+    color: var(--color-text-muted);
+  }
+}
