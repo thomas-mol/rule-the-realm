@@ -8,6 +8,8 @@ export const useGames = () => {
   return useQuery<TGameSessionSchema[], Error>({
     queryKey: ["games"],
     queryFn: () => api.getAll(),
+    staleTime: 1000 * 60 * 5,
+    retry: 2,
   });
 };
 

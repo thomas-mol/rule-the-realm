@@ -8,6 +8,7 @@
 
 @media screen and (min-width: 770px) {
   .form {
+    margin-top: calc(2rem + 2vw);
     box-shadow: var(--shadow-light);
     border: 1px solid var(--color-primary);
     border-radius: 0.5rem;

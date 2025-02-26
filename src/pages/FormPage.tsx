@@ -13,8 +13,10 @@ const FormPage = () => {
 
   return (
     <div>
-      {villains && (
+      {villains ? (
         <Form villains={villains} onSubmit={(data) => handleSubmit(data)} />
+      ) : (
+        <p>Something went wrong loading the villains.</p>
       )}
     </div>
   );
