@@ -11,7 +11,7 @@ import styles from "./Form.module.css";
 
 interface FormProps {
   villains: TVillainSchema[];
-  onSubmit: (data: TGameSessionSchema) => void;
+  onSubmit: (data: TGameSessionSchema, reset: () => void) => void;
 }
 
 const customStyles: StylesConfig<any, true> = {
@@ -72,13 +72,11 @@ const Form = ({ villains, onSubmit }: FormProps) => {
     }
   };
 
-  const handleFormSubmit = (data: TGameSessionSchema) => {
-    onSubmit(data);
-    reset();
-  };
-
   return (
-    <form className={styles.form} onSubmit={handleSubmit(handleFormSubmit)}>
+    <form
+      className={styles.form}
+      onSubmit={handleSubmit((data) => onSubmit(data, reset))}
+    >
       <div className={styles.group}>
         <label className={styles.label} htmlFor="player-count">
           Player Count 👥

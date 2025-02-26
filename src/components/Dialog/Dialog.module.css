@@ -1,0 +1,58 @@
+.backdrop {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.dialog {
+  background: var(--color-bg);
+  color: var(--color-text);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  width: 320px;
+  text-align: center;
+
+  h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: var(--color-text-muted);
+    }
+  }
+}
+
+.cancel {
+  background: var(--color-bg-alt);
+  color: var(--color-text-muted);
+
+  &:hover {
+    color: var(--color-bg-alt);
+  }
+}
+
+.confirm {
+  background: var(--color-primary);
+  color: var(--color-text);
+}

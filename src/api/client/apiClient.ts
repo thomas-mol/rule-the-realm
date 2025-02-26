@@ -50,7 +50,7 @@ abstract class APIClient<T extends { id: string }> {
         collection(db, this.collectionRef),
         dataWithoutId
       );
-      alert("Game added.");
+      console.log("Document added.");
       return this.getById(documentRef.id);
     } catch (error) {
       console.error("Error adding document:", error);
