@@ -14,7 +14,7 @@ const Podium = ({ villains }: Props) => {
             <img
               src={getTransformedImage(
                 villain.imageUrl,
-                "q_auto,f_auto,w_500/"
+                "q_auto,f_auto,w_300/"
               )}
               alt={`${villain.name}, ranked #${index + 1}`}
             />

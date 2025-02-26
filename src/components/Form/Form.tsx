@@ -17,11 +17,6 @@ interface FormProps {
 const customStyles: StylesConfig<any, true> = {
   option: (provided, state) => ({
     ...provided,
-    backgroundColor: state.isSelected
-      ? "#ffcc00"
-      : state.isFocused
-      ? "#ffee99"
-      : "#fff",
     color: state.isSelected ? "#000" : "#333",
   }),
 };
@@ -148,11 +143,13 @@ const Form = ({ villains, onSubmit }: FormProps) => {
             <select
               {...field}
               id="winner"
-              className={styles.input}
+              className={styles.select}
               disabled={selectedVillainIds.length === 0}
               aria-describedby={errors.winnerId ? "winner-error" : undefined}
             >
-              <option value="">Select winner...</option>
+              <option value="" disabled>
+                Select winner...
+              </option>
               {eligibleWinners.map(({ value, label }) => (
                 <option key={value} value={value}>
                   {label}

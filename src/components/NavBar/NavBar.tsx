@@ -39,7 +39,7 @@ export const DesktopNavBar = ({ className }: Props) => {
         className={({ isActive }) => (isActive ? styles.active : "")}
         to={"/form"}
       >
-        <FaPlus /> Add a Game
+        <FaPlus /> Add Game
       </NavLink>
       <NavLink
         to={"https://github.com/thomas-mol/rule-the-realm"}

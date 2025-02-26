@@ -60,9 +60,9 @@ const RankingList = ({ villains }: Props) => {
                 <img
                   src={getTransformedImage(
                     villain.imageUrl,
-                    "q_auto,f_auto,w_300/"
+                    "q_auto,f_auto,w_100/"
                   )}
-                  alt={`Thumbnail of the villainous ${villain.name}`}
+                  alt={`Thumbnail of the villain ${villain.name}`}
                 />
                 <p>{villain.name}</p>
               </div>
