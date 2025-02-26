@@ -26,6 +26,9 @@ const Leaderboard = () => {
     );
   }
 
+  if (error)
+    return <div className={styles.message}>Error loading villains!</div>;
+
   return (
     <div className={styles.leaderboard}>
       <Podium villains={topThree} />

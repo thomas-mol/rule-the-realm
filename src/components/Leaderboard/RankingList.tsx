@@ -36,6 +36,8 @@ const RankingList = ({ villains }: RankingListProps) => {
                       "q_auto,f_auto,w_100/"
                     )}
                     alt={`Thumbnail of ${villain.name}`}
+                    width={100}
+                    height={100}
                   />
                   <p>{villain.name}</p>
                 </div>

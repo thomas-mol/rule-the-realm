@@ -93,6 +93,7 @@
     }
 
     img {
+      height: auto;
       border-width: 4px;
     }
 

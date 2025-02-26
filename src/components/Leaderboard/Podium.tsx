@@ -17,6 +17,8 @@ const Podium = ({ villains }: Props) => {
                 "q_auto,f_auto,w_300/"
               )}
               alt={`${villain.name}, ranked #${index + 1}`}
+              height={300}
+              width={300}
             />
             <div className={styles.number} aria-hidden="true">
               {index + 1}

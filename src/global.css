@@ -43,9 +43,10 @@ a {
 :root {
   --color-bg: #3f3f3f;
   --color-bg-alt: #282828;
-  --color-primary: rgb(139, 92, 246);
+  --color-primary: #8b5cf6;
   --color-secondary: rgb(255, 204, 0);
   --color-text: #e0e0e0;
+  --color-text-primary: #e0d3fd;
   --color-text-muted: #a0a0a0;
   --color-border: #6c757d;
   --color-hover: #3f3f3f;
