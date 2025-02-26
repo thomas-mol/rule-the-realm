@@ -1,14 +1,18 @@
+import { GiCrownedHeart } from "react-icons/gi";
 import { Outlet } from "react-router";
-import styles from "./App.module.css";
-import { MobileNavBar, DesktopNavBar } from "./components/NavBar/NavBar";
 import { useWindowSize } from "usehooks-ts";
+import styles from "./App.module.css";
+import { DesktopNavBar, MobileNavBar } from "./components/NavBar/NavBar";
 
 function App() {
   const { width } = useWindowSize();
 
   return (
     <div className={styles.layout}>
-      <h2 className={styles.title}>Rule the Realm</h2>
+      <div className={styles.title}>
+        <h1>Rule the Realm</h1>
+        <GiCrownedHeart />
+      </div>
       <div className={styles.page}>
         <Outlet />
       </div>
