@@ -9,3 +9,13 @@ export function getWinrate(villain: TVillainSchema) {
 export function getTransformedImage(url: string, options: string = "") {
   return url.replace("/upload/", `/upload/${options}/`);
 }
+
+export function sortVillains(a: TVillainSchema, b: TVillainSchema) {
+  if (b.wins === a.wins) {
+    if (a.losses === b.losses) {
+      return a.name.localeCompare(b.name);
+    }
+    return a.losses - b.losses;
+  }
+  return b.wins - a.wins;
+}

@@ -51,5 +51,3 @@ export const DesktopNavBar = ({ className }: Props) => {
     </nav>
   );
 };
-
-export default MobileNavBar;

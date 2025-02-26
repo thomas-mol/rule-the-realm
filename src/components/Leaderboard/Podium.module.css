@@ -82,6 +82,9 @@
     --size-number: 2em;
     position: relative;
     margin-bottom: var(--size-number);
+    width: 100%;
+    max-width: 250px;
+    aspect-ratio: 1 / 1;
 
     img,
     .number {
@@ -105,5 +108,49 @@
       border-width: 2px;
       font-weight: bold;
     }
+  }
+}
+
+/* SKELETON CSS */
+
+.skeletonImage {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-text-muted);
+  border-radius: 50%;
+  border-style: solid;
+}
+
+.skeletonName {
+  width: 10ch;
+  height: 1rem;
+  margin-bottom: 0.25rem;
+  background-color: var(--color-text-muted);
+  border-radius: 0.125rem;
+}
+
+.skeletonWinrate {
+  width: 8ch;
+  height: 1rem;
+  margin-bottom: 0.25rem;
+  background-color: var(--color-text-muted);
+  border-radius: 0.125rem;
+}
+
+.skeletonImage,
+.skeletonName,
+.skeletonWinrate {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
   }
 }

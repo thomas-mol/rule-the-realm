@@ -16,7 +16,7 @@ function App() {
       <div className={styles.page}>
         <Outlet />
       </div>
-      {width < 770 ? (
+      {width < 768 ? (
         <MobileNavBar className={styles.mobile} />
       ) : (
         <DesktopNavBar className={styles.desktop} />
